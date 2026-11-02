@@ -1,0 +1,31 @@
+{
+  "name": "elm-test-lab",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22.12"
+  },
+  "scripts": {
+    "dev": "npm run build:elm && vite --host 127.0.0.1",
+    "build:elm": "node scripts/elm-tool.mjs build",
+    "build": "npm run build:elm && vite build",
+    "preview": "vite preview --host 127.0.0.1",
+    "test": "npm run test:elm && npm run test:e2e",
+    "test:elm": "node scripts/elm-tool.mjs test",
+    "test:watch": "node scripts/elm-tool.mjs test --watch",
+    "test:evidence": "node scripts/probe-evidence.mjs",
+    "test:e2e": "playwright test",
+    "test:e2e:ui": "playwright test --ui",
+    "format": "elm-format src tests --yes",
+    "format:check": "elm-format src tests --validate",
+    "check": "npm run format:check && npm run test:elm && npm run test:e2e"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.60.0",
+    "elm": "0.19.1-6",
+    "elm-format": "0.8.8",
+    "elm-test": "0.19.1-revision17",
+    "vite": "8.3.5"
+  }
+}
